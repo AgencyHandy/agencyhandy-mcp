@@ -1,3 +1,5 @@
+[![M8ven Score](https://m8ven.ai/badge/mcp/agencyhandy/agencyhandy-mcp)](https://m8ven.ai/mcp/agencyhandy/agencyhandy-mcp?s=readme)
+
 <p align="center"><img src="assets/logo-400.png" width="96" height="96" alt="Agency Handy logo"></p>
 
 # Agency Handy MCP server
@@ -83,9 +85,6 @@ claude mcp add --transport http agencyhandy https://mcp.agencyhandy.com/ --heade
   }
 }
 ```
-
-### M8ven Support
-[![M8ven Score]([![M8ven Score](https://m8ven.ai/badge/mcp/agencyhandy-agencyhandy-mcp-s154qd)](https://m8ven.ai/mcp/agencyhandy-agencyhandy-mcp-s154qd?s=readme)
 
 ## What it can do
 
