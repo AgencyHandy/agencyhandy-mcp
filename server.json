@@ -3,7 +3,7 @@
   "name": "com.agencyhandy/mcp",
   "title": "Agency Handy",
   "description": "Agency CRM, projects, tasks, invoices and proposals. Sign in with Agency Handy or use an API key.",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "websiteUrl": "https://agencyhandy.com",
   "repository": {
     "url": "https://github.com/AgencyHandy/agencyhandy-mcp",
