@@ -2,8 +2,8 @@
 
 The server is hosted. Do not clone, build or run anything from this repository.
 
-1. Ask the user for their Agency Handy API key. They create it in Agency Handy under **Settings → Workspace Config → API Key**. Never invent a key and never print it back in full.
-2. Add this server to the client's MCP settings, using the key in the `Authorization` header:
+1. If the client supports OAuth for remote MCP servers, add only the URL `https://mcp.agencyhandy.com/` and let the user sign in with Agency Handy in the browser. No key is needed; stop here and go to step 3.
+2. Otherwise ask the user for their Agency Handy API key. They create it in Agency Handy under **Settings → Workspace Config → API Key**. Never invent a key and never print it back in full. Add this server to the client's MCP settings, using the key in the `Authorization` header:
 
 ```json
 {
@@ -30,5 +30,5 @@ The server is hosted. Do not clone, build or run anything from this repository.
 }
 ```
 
-3. Check the connection by calling the `ah_health` tool. It returns `"ok": true` when the key works. A 401 means the key is wrong, expired or deleted.
+3. Check the connection by calling the `ah_health` tool. It returns `"ok": true` when the key works. A 401 means the sign-in or key is missing, expired or revoked.
 4. Before calling any tool that sends something to a client (`ah_invoice_send`, `ah_proposal_send`, `ah_client_invite`) or deletes data, show the user exactly what will happen and wait for their confirmation.

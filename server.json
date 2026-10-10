@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.agencyhandy/mcp",
   "title": "Agency Handy",
-  "description": "Agency CRM, projects, tasks, tickets, invoices and proposals in your Agency Handy workspace.",
-  "version": "1.10.1",
+  "description": "Agency CRM, projects, tasks, invoices and proposals. Sign in with Agency Handy or use an API key.",
+  "version": "1.12.0",
   "websiteUrl": "https://agencyhandy.com",
   "repository": {
     "url": "https://github.com/AgencyHandy/agencyhandy-mcp",
@@ -13,7 +13,9 @@
     {
       "src": "https://raw.githubusercontent.com/AgencyHandy/agencyhandy-mcp/main/assets/logo-400.png",
       "mimeType": "image/png",
-      "sizes": ["400x400"]
+      "sizes": [
+        "400x400"
+      ]
     }
   ],
   "remotes": [
@@ -23,8 +25,8 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer followed by your Agency Handy workspace API key (Settings > Workspace Config > API Key)",
-          "isRequired": true,
+          "description": "Optional. Leave unset to sign in with Agency Handy (OAuth 2.1). Or send Bearer followed by a workspace API key (Settings > Workspace Config > API Key).",
+          "isRequired": false,
           "isSecret": true
         }
       ]

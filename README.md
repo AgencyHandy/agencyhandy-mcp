@@ -11,17 +11,25 @@ The server is hosted by Agency Handy. This repository holds the connection instr
 | | |
 |---|---|
 | **Endpoint** | `https://mcp.agencyhandy.com/` (Streamable HTTP, `POST /`) |
-| **Auth** | Workspace API key, sent as `Authorization: Bearer <key>` |
+| **Auth** | **Sign in with Agency Handy** (OAuth 2.1, PKCE, dynamic client registration), or a workspace API key sent as `Authorization: Bearer <key>` |
 | **Registry** | `com.agencyhandy/mcp` in the [Official MCP Registry](https://registry.modelcontextprotocol.io) |
 | **Docs** | [docs.agencyhandy.com](https://docs.agencyhandy.com/integrations/claude-cursor-mcp) |
 
-## Get an API key
+## How you connect
 
-In Agency Handy, open **Settings → Workspace Config → API Key** and generate a key. The key acts as you, with your role's permissions, in that one workspace. Delete it on the same screen to cut off access at once.
+**Sign in with Agency Handy (recommended).** Add the server URL in your assistant and it opens an Agency Handy window. Enter your workspace, sign in, choose the workspace and click **Allow**. Nothing to copy or paste. Each connection appears in Agency Handy under **Settings → Workspace Config → API Key**, where you can remove it at any time.
+
+**Or use an API key.** For tools that can't do OAuth, generate a key in **Settings → Workspace Config → API Key** and send it as `Authorization: Bearer YOUR_API_KEY`. The key acts as you, with your role's permissions, in that one workspace.
 
 ## Set up your client
 
-Replace `YOUR_API_KEY` with your key.
+### Claude (claude.ai and Claude Desktop)
+
+**Settings → Connectors → Add custom connector** (on claude.ai: **Customize → Connectors → Add**). Name `Agency Handy`, URL `https://mcp.agencyhandy.com/`, then **Connect** and sign in.
+
+### ChatGPT
+
+In developer mode: **Settings → Apps & Connectors → Create**. URL `https://mcp.agencyhandy.com/`, authentication **OAuth**, then sign in with Agency Handy.
 
 ### Claude Code
 
@@ -32,59 +40,54 @@ Install the plugin, which also adds a usage skill and asks you to confirm before
 /plugin install agencyhandy@agencyhandy
 ```
 
-Or add the server directly:
+Or add the server directly, then run `/mcp` and choose **Authenticate**:
 
 ```
-claude mcp add --transport http agencyhandy https://mcp.agencyhandy.com/ --header "Authorization: Bearer YOUR_API_KEY"
+claude mcp add --transport http agencyhandy https://mcp.agencyhandy.com/
 ```
+
+With an API key instead: `claude mcp add --transport http agencyhandy https://mcp.agencyhandy.com/ --header "Authorization: Bearer YOUR_API_KEY"`
 
 ### Cursor
 
-`~/.cursor/mcp.json`:
+`~/.cursor/mcp.json`, then click **Login** next to the server in Cursor's MCP settings:
 
 ```json
 {
   "mcpServers": {
-    "agencyhandy": {
-      "url": "https://mcp.agencyhandy.com/",
-      "headers": { "Authorization": "Bearer YOUR_API_KEY" }
-    }
+    "agencyhandy": { "url": "https://mcp.agencyhandy.com/" }
   }
 }
 ```
+
+With an API key instead, add `"headers": { "Authorization": "Bearer YOUR_API_KEY" }`.
 
 ### VS Code (GitHub Copilot)
 
-`.vscode/mcp.json`:
+`.vscode/mcp.json`. VS Code asks you to sign in when the server starts:
 
 ```json
 {
-  "inputs": [
-    { "type": "promptString", "id": "agencyhandy-key", "description": "Agency Handy API key", "password": true }
-  ],
   "servers": {
-    "agencyhandy": {
-      "type": "http",
-      "url": "https://mcp.agencyhandy.com/",
-      "headers": { "Authorization": "Bearer ${input:agencyhandy-key}" }
-    }
+    "agencyhandy": { "type": "http", "url": "https://mcp.agencyhandy.com/" }
   }
 }
 ```
 
-### Claude Desktop, Cline and other stdio-only clients
+### Cline and other stdio-only clients
 
 ```json
 {
   "mcpServers": {
     "agencyhandy": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.agencyhandy.com/", "--header", "Authorization: Bearer ${AGENCYHANDY_API_KEY}"],
-      "env": { "AGENCYHANDY_API_KEY": "YOUR_API_KEY" }
+      "args": ["-y", "mcp-remote", "https://mcp.agencyhandy.com/"]
     }
   }
 }
 ```
+
+`mcp-remote` opens the sign-in in your browser. With an API key instead, add `"--header", "Authorization: Bearer ${AGENCYHANDY_API_KEY}"` to `args` and set `AGENCYHANDY_API_KEY` in `env`.
 
 ## What it can do
 
@@ -99,7 +102,7 @@ Start a session with `ah_health` and read the `ah://full-context` resource for t
 
 ## Safety
 
-Everything runs with the permissions of the API key's owner in one workspace. Tools that email clients or delete data change real customer data, so check what the assistant proposes before you confirm it. The Claude Code plugin always asks before those actions.
+Everything runs with the permissions of the person who connected, in the one workspace they chose. Tools that email clients or delete data change real customer data, so check what the assistant proposes before you confirm it. The Claude Code plugin always asks before those actions. The sign-in screen warns when an app is not verified, and always shows where it will send you back to.
 
 The hosted server does not store your workspace data. It keeps short request logs (tool, timing, member and workspace IDs, IP address, errors with keys removed) for up to 14 days. See the [privacy policy](https://www.agencyhandy.com/privacy-policy/).
 
