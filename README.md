@@ -1,4 +1,4 @@
-[![M8ven Score](https://m8ven.ai/badge/mcp/agencyhandy/agencyhandy-mcp)](https://m8ven.ai/mcp/agencyhandy/agencyhandy-mcp?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/agencyhandy-agencyhandy-mcp-s154qd?v=9ff62f06b07d90f4266fddd21ce2d80d)](https://m8ven.ai/mcp/agencyhandy-agencyhandy-mcp-s154qd?s=readme)
 
 <p align="center"><img src="assets/logo-400.png" width="96" height="96" alt="Agency Handy logo"></p>
 
