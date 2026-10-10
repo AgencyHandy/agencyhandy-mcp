@@ -84,6 +84,9 @@ claude mcp add --transport http agencyhandy https://mcp.agencyhandy.com/ --heade
 }
 ```
 
+### M8ven Support
+[![M8ven Score](https://m8ven.ai/badge/mcp/agencyhandy-agencyhandy-mcp-s154qd?v=8382b3b37147d9f528dfb3969509331d)](https://m8ven.ai/mcp/agencyhandy-agencyhandy-mcp-s154qd?s=readme)
+
 ## What it can do
 
 About 100 tools, all starting with `ah_`:
