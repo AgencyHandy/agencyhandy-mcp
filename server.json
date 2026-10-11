@@ -3,7 +3,7 @@
   "name": "com.agencyhandy/mcp",
   "title": "Agency Handy",
   "description": "Agency CRM, projects, tasks, invoices and proposals. Sign in with Agency Handy or use an API key.",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "websiteUrl": "https://agencyhandy.com",
   "repository": {
     "url": "https://github.com/AgencyHandy/agencyhandy-mcp",
@@ -11,10 +11,10 @@
   },
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/AgencyHandy/agencyhandy-mcp/main/assets/logo-400.png",
+      "src": "https://raw.githubusercontent.com/AgencyHandy/agencyhandy-mcp/main/assets/logo-1024.png",
       "mimeType": "image/png",
       "sizes": [
-        "400x400"
+        "1024x1024"
       ]
     }
   ],
